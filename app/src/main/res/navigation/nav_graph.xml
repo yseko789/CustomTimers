@@ -27,5 +27,21 @@
         android:id="@+id/timerFragment"
         android:name="com.yseko.customtimers.TimerFragment"
         android:label="fragment_timer"
-        tools:layout="@layout/fragment_timer" />
+        tools:layout="@layout/fragment_timer" >
+        <argument
+            android:name="hours"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="minutes"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="seconds"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="task"
+            app:argType="string" />
+    </fragment>
 </navigation>

@@ -3,6 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".TimerFragment">
+
+    <data>
+        <variable
+            name="activeTimerViewModel"
+            type="com.yseko.customtimers.ActiveTimerViewModel" />
+    </data>
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -46,26 +54,57 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:max="10"
-                android:progress="100"
+                android:max="@{activeTimerViewModel.limit}"
+                android:progress="@{activeTimerViewModel.milliSeconds}"
                 android:rotation="-90"
                 android:background="@drawable/circular_progress_gray"
                 android:progressDrawable="@drawable/circular_progress_bar"
                 android:indeterminate="false"/>
             <LinearLayout
-                android:layout_width="60dp"
+                android:layout_width="90dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:background="@drawable/item_circular_color_accent_background"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
                 <TextView
-                    android:id="@+id/tvTimer"
+                    android:id="@+id/tvTimerHours"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#FFFFFF"
                     android:textSize="25sp"
                     android:textStyle="bold"
-                    android:text="10"/>
+                    android:text="@{activeTimerViewModel.hours.toString()}"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:text=":"/>
+                <TextView
+                    android:id="@+id/tvTimerMinutes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:text="@{activeTimerViewModel.minutes.toString()}"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:text=":"/>
+                <TextView
+                    android:id="@+id/tvTimerSeconds"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:text="@{activeTimerViewModel.seconds.toString()}"/>
             </LinearLayout>
         </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

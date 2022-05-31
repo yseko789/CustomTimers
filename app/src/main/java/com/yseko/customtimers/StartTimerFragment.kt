@@ -32,7 +32,7 @@ class StartTimerFragment : Fragment() {
 //                "Here we will start the exercise.",
 //                Toast.LENGTH_SHORT
 //            ).show()
-            val action = StartTimerFragmentDirections.actionStartTimerFragmentToTimerFragment()
+            val action = StartTimerFragmentDirections.actionStartTimerFragmentToTimerFragment(hours = 1, minutes = 0, seconds = 0, task = "Exercise")
             this.findNavController().navigate(action)
         }
     }
