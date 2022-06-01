@@ -11,18 +11,17 @@
         android:label="fragment_list"
         tools:layout="@layout/fragment_list" >
         <action
-            android:id="@+id/action_listFragment_to_startTimerFragment"
-            app:destination="@id/startTimerFragment" />
+            android:id="@+id/action_listFragment_to_timerFragment"
+            app:destination="@id/timerFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_addTimerFragment"
+            app:destination="@id/addTimerFragment" />
     </fragment>
     <fragment
         android:id="@+id/startTimerFragment"
         android:name="com.yseko.customtimers.StartTimerFragment"
         android:label="fragment_start_timer"
-        tools:layout="@layout/fragment_start_timer" >
-        <action
-            android:id="@+id/action_startTimerFragment_to_timerFragment"
-            app:destination="@id/timerFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_start_timer" />
     <fragment
         android:id="@+id/timerFragment"
         android:name="com.yseko.customtimers.TimerFragment"
@@ -43,5 +42,14 @@
         <argument
             android:name="task"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTimerFragment"
+        android:name="com.yseko.customtimers.AddTimerFragment"
+        android:label="fragment_add_timer"
+        tools:layout="@layout/fragment_add_timer" >
+        <action
+            android:id="@+id/action_addTimerFragment_to_listFragment"
+            app:destination="@id/listFragment" />
     </fragment>
 </navigation>

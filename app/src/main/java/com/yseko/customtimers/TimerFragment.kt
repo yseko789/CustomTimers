@@ -22,16 +22,13 @@ class TimerFragment : Fragment() {
     private val viewModel: ActiveTimerViewModel by viewModels()
 
 
-//    private var timer: CountDownTimer? = null
-//    private var progress = 0
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        _binding = FragmentTimerBinding.inflate(inflater, container, false)
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_timer, container, false)
-        (activity as AppCompatActivity).setSupportActionBar(binding.toolbarTimer)
         viewModel.setTime(navigationArgs.hours, navigationArgs.minutes, navigationArgs.seconds,navigationArgs.task)
         viewModel.setupView()
         return binding.root
@@ -40,49 +37,26 @@ class TimerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        binding.toolbarTimer.setNavigationOnClickListener{
-            requireActivity().onBackPressed()
-        }
+
         binding.activeTimerViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.taskTimer.text = navigationArgs.task
+        binding.playBtn.setOnClickListener{
+            if(viewModel.pause.value == false) {
+                viewModel.pauseTimer()
+                it.setBackgroundResource(R.drawable.ic_baseline_play_arrow_24)
+            }else{
+                viewModel.resumeTimer()
+                it.setBackgroundResource(R.drawable.ic_baseline_pause_24)
+            }
+        }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-//        if(timer!= null){
-//            timer?.cancel()
-//            progress = 0
-//        }
         viewModel.cancelTimer()
     }
 
-//    private fun setupView(){
-//        if(timer!=null){
-//            timer?.cancel()
-//            progress = 0
-//        }
-//        setProgressBar()
-//    }
-//
-//    private fun setProgressBar(){
-//        binding.progressBar.progress = progress
-//        timer = object: CountDownTimer(10000, 1000){
-//            override fun onTick(millisUntilFinished: Long) {
-//                progress++
-//                binding.progressBar.progress = 10 - progress
-//                binding.tvTimer.text = (10 - progress).toString()
-//            }
-//
-//            override fun onFinish() {
-//                Toast.makeText(
-//                    requireContext(),
-//                    "Timer end",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//            }
-//
-//        }.start()
-//    }
 
 
 }

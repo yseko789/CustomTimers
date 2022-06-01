@@ -27,13 +27,8 @@ class StartTimerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.flStart.setOnClickListener{
-//            Toast.makeText(
-//                requireContext(),
-//                "Here we will start the exercise.",
-//                Toast.LENGTH_SHORT
-//            ).show()
-            val action = StartTimerFragmentDirections.actionStartTimerFragmentToTimerFragment(hours = 1, minutes = 0, seconds = 0, task = "Exercise")
-            this.findNavController().navigate(action)
+//            val action = StartTimerFragmentDirections.actionStartTimerFragmentToTimerFragment(hours = 1, minutes = 0, seconds = 0, task = "Exercise")
+//            this.findNavController().navigate(action)
         }
     }
 

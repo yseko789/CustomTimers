@@ -1,9 +1,6 @@
 package com.yseko.customtimers
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.yseko.customtimers.data.TimerDao
 import com.yseko.customtimers.data.Timer
 import kotlinx.coroutines.launch
@@ -53,4 +50,14 @@ class TimerViewModel(private val timerDao: TimerDao): ViewModel() {
         }
     }
 
+}
+
+class TimerViewModelFactory(private val timerDao: TimerDao): ViewModelProvider.Factory{
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if(modelClass.isAssignableFrom(TimerViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return TimerViewModel(timerDao) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
 }

@@ -13,99 +13,90 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/black">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarTimer"
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/toolbarTimer"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="?android:attr/actionBarSize"-->
+<!--            android:background="@color/black"-->
+<!--            android:theme="@style/ToolbarTheme"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:titleTextColor="@color/white" />-->
+        <TextView
+            android:id="@+id/taskTimer"
             android:layout_width="match_parent"
-            android:layout_height="?android:attr/actionBarSize"
-            android:background="@color/white"
-            android:theme="@style/ToolbarTheme"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:titleTextColor="@color/colorPrimary" />
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            tools:text="helooooooome"/>
 
-        <TextView
-            android:id="@+id/tvTitle"
-            android:text="Get Ready For"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:textColor="@color/colorAccent"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/flProgressBar" />
         <FrameLayout
             android:id="@+id/flProgressBar"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:background="@drawable/item_circular_color_accent_border"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbarTimer">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/taskTimer"
+            android:layout_marginTop="70dp">
 
             <ProgressBar
                 android:id="@+id/progressBar"
                 style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
                 android:layout_gravity="center"
+                android:background="@drawable/circular_progress_gray"
+                android:indeterminate="false"
                 android:max="@{activeTimerViewModel.limit}"
                 android:progress="@{activeTimerViewModel.milliSeconds}"
-                android:rotation="-90"
-                android:background="@drawable/circular_progress_gray"
                 android:progressDrawable="@drawable/circular_progress_bar"
-                android:indeterminate="false"/>
+                android:rotation="-90" />
+
             <LinearLayout
-                android:layout_width="90dp"
-                android:layout_height="60dp"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
                 android:layout_gravity="center"
-                android:background="@drawable/item_circular_color_accent_background"
+
                 android:gravity="center"
                 android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/tvTimerHours"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@{activeTimerViewModel.time}"
                     android:textColor="#FFFFFF"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    android:text="@{activeTimerViewModel.hours.toString()}"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    android:text=":"/>
-                <TextView
-                    android:id="@+id/tvTimerMinutes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    android:text="@{activeTimerViewModel.minutes.toString()}"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    android:text=":"/>
-                <TextView
-                    android:id="@+id/tvTimerSeconds"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    android:text="@{activeTimerViewModel.seconds.toString()}"/>
+                    android:textSize="40sp"
+                    android:textStyle="bold" />
             </LinearLayout>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/timer_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/flProgressBar">
+            <TextView
+                android:id="@+id/playBtn"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_baseline_pause_24"/>
         </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
