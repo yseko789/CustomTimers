@@ -14,12 +14,17 @@ interface TimerDao{
     @Insert
     suspend fun insert(timer: Timer)
 
-    @Update
-    suspend fun update(timer: Timer)
+//    @Update
+//    suspend fun update(timer: Timer)
 
-    @Delete
-    suspend fun delete(timer: Timer)
+//    @Delete
+//    suspend fun delete(timer: Timer)
 
+    @Query("UPDATE timer SET task = :task, hours= :hours, minutes = :minutes, seconds = :seconds WHERE id=:id")
+    suspend fun update(id: Int, hours: Int, minutes: Int, seconds: Int, task: String)
+
+    @Query("DELETE FROM timer WHERE id = :id")
+    suspend fun deleteById(id: Int)
 
 
 }

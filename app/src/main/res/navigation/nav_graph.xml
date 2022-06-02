@@ -18,11 +18,6 @@
             app:destination="@id/addTimerFragment" />
     </fragment>
     <fragment
-        android:id="@+id/startTimerFragment"
-        android:name="com.yseko.customtimers.StartTimerFragment"
-        android:label="fragment_start_timer"
-        tools:layout="@layout/fragment_start_timer" />
-    <fragment
         android:id="@+id/timerFragment"
         android:name="com.yseko.customtimers.TimerFragment"
         android:label="fragment_timer"
@@ -51,5 +46,25 @@
         <action
             android:id="@+id/action_addTimerFragment_to_listFragment"
             app:destination="@id/listFragment" />
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <argument
+            android:name="task"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="hours"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <argument
+            android:name="minutes"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <argument
+            android:name="seconds"
+            app:argType="integer"
+            android:defaultValue="-1" />
     </fragment>
 </navigation>

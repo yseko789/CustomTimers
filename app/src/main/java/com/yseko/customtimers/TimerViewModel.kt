@@ -25,30 +25,20 @@ class TimerViewModel(private val timerDao: TimerDao): ViewModel() {
     }
 
     fun removeTimer(id: Int){
-        val timer = getTimer(id).value
-        if (timer != null) {
-            deleteTimer(timer)
-        }
-    }
-
-    private fun deleteTimer(timer: Timer){
         viewModelScope.launch {
-            timerDao.delete(timer)
+            timerDao.deleteById(id)
         }
     }
 
-    fun editTimer(id: Int){
-        val timer = getTimer(id).value
-        if(timer!=null){
-            updateTimer(timer)
+
+
+    fun editTimer(id: Int, hours: Int, minutes: Int, seconds: Int, task: String){
+        viewModelScope.launch{
+            timerDao.update(id, hours, minutes, seconds, task)
         }
     }
 
-    private fun updateTimer(timer: Timer){
-        viewModelScope.launch {
-            timerDao.update(timer)
-        }
-    }
+
 
 }
 

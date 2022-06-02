@@ -34,14 +34,20 @@ class ListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        binding.goToTimer.setOnClickListener{
-//            val action = ListFragmentDirections.actionListFragmentToTimerFragment()
-//            this.findNavController().navigate(action)
-//        }
-        val adapter = TimerAdapter{
-            val action = ListFragmentDirections.actionListFragmentToTimerFragment(it.task, it.hours, it.minutes, it.seconds)
-            this.findNavController().navigate(action)
-        }
+        val adapter = TimerAdapter(
+            {
+                val action = ListFragmentDirections.actionListFragmentToTimerFragment(it.task, it.hours, it.minutes, it.seconds)
+                this.findNavController().navigate(action)
+            },
+            {
+                viewModel.removeTimer(it.id)
+                println(it.id)
+            },
+            {
+                val action = ListFragmentDirections.actionListFragmentToAddTimerFragment(it.id, it.task, it.hours, it.minutes, it.seconds)
+                this.findNavController().navigate(action)
+            }
+        )
 
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
@@ -54,7 +60,6 @@ class ListFragment : Fragment() {
         }
 
         binding.addTimer.setOnClickListener{
-//            viewModel.addTimer(0, 0, 30, "thirtysec")
             val action = ListFragmentDirections.actionListFragmentToAddTimerFragment()
             this.findNavController().navigate(action)
         }

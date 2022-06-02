@@ -1,9 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.CustomTimers" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.CustomTimers" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/colorAccent</item>
+        <item name="colorPrimaryVariant">@color/colorAccent</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -14,7 +14,19 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="ToolbarTheme" parent="@style/ThemeOverlay.MaterialComponents.ActionBar">
-        <item name="colorControlNormal">@color/toolbar_color_control_normal</item>
+<!--    <style name="ToolbarTheme" parent="@style/ThemeOverlay.MaterialComponents.ActionBar">-->
+<!--        <item name="colorControlNormal">@color/toolbar_color_control_normal</item>-->
+<!--    </style>-->
+
+    <style name = "NumberPickerTheme" parent = "Theme.CustomTimers">
+        <item name = "colorControlNormal">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textSize">40sp</item>
+    </style>
+
+    <style name = "TaskInputTheme" parent="@android:style/Widget.EditText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/darkGrey</item>
+        <item name = "android:textColorHint">@color/white</item>
     </style>
 </resources>
