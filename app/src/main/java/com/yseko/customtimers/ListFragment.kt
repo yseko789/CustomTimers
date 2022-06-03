@@ -1,10 +1,8 @@
 package com.yseko.customtimers
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,6 +20,11 @@ class ListFragment : Fragment() {
         )
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +33,17 @@ class ListFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentListBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.add_options_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val action = ListFragmentDirections.actionListFragmentToAddTimerFragment(action = "Create New Timer")
+        this.findNavController().navigate(action)
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,7 +58,7 @@ class ListFragment : Fragment() {
                 println(it.id)
             },
             {
-                val action = ListFragmentDirections.actionListFragmentToAddTimerFragment(it.id, it.task, it.hours, it.minutes, it.seconds)
+                val action = ListFragmentDirections.actionListFragmentToAddTimerFragment("Edit Timer", it.id, it.task, it.hours, it.minutes, it.seconds)
                 this.findNavController().navigate(action)
             }
         )
@@ -59,10 +73,10 @@ class ListFragment : Fragment() {
             }
         }
 
-        binding.addTimer.setOnClickListener{
-            val action = ListFragmentDirections.actionListFragmentToAddTimerFragment()
-            this.findNavController().navigate(action)
-        }
+//        binding.addTimer.setOnClickListener{
+//            val action = ListFragmentDirections.actionListFragmentToAddTimerFragment()
+//            this.findNavController().navigate(action)
+//        }
 
     }
 

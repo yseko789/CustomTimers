@@ -16,28 +16,7 @@
         android:layout_height="match_parent"
         android:background="@color/black">
 
-<!--        <androidx.appcompat.widget.Toolbar-->
-<!--            android:id="@+id/toolbarTimer"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="?android:attr/actionBarSize"-->
-<!--            android:background="@color/black"-->
-<!--            android:theme="@style/ToolbarTheme"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:titleTextColor="@color/white" />-->
-        <TextView
-            android:id="@+id/taskTimer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:gravity="center"
-            android:layout_marginTop="30dp"
-            tools:text="helooooooome"/>
+
 
         <FrameLayout
             android:id="@+id/flProgressBar"
@@ -46,8 +25,8 @@
             android:background="@drawable/item_circular_color_accent_border"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/taskTimer"
-            android:layout_marginTop="70dp">
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="40dp">
 
             <ProgressBar
                 android:id="@+id/progressBar"
@@ -57,7 +36,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/circular_progress_gray"
                 android:indeterminate="false"
-                android:max="@{activeTimerViewModel.limit}"
+                android:max="@{activeTimerViewModel.millisecondsOriginal}"
                 android:progress="@{activeTimerViewModel.milliSeconds}"
                 android:progressDrawable="@drawable/circular_progress_bar"
                 android:rotation="-90" />
@@ -83,20 +62,78 @@
         </FrameLayout>
 
         <FrameLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:id="@+id/frameLayout"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:background="@drawable/timer_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/flProgressBar"
+            android:layout_marginTop="50dp">
+
+            <TextView
+                android:id="@+id/playBtn"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_gravity="center"
+                android:background="@{activeTimerViewModel.pause? @drawable/ic_baseline_play_arrow_24:@drawable/ic_baseline_pause_24}"
+                android:textColor="@color/white" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/timer_button"
+            app:layout_constraintEnd_toStartOf="@+id/frameLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout">
+
+            <TextView
+                android:id="@+id/resetBtn"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:gravity="center"
+                android:text="Reset"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frameLayout2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/timer_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/frameLayout"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout">
+
+            <TextView
+                android:id="@+id/skipBtn"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:gravity="center"
+                android:text="Skip"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:background="@drawable/timer_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/flProgressBar">
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout">
+
             <TextView
-                android:id="@+id/playBtn"
-                android:layout_width="100sp"
-                android:layout_height="100sp"
+                android:id="@+id/endBtn"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:gravity="center"
+                android:text="End"
                 android:textColor="@color/white"
-                android:layout_gravity="center"
-                android:background="@drawable/ic_baseline_pause_24"/>
+                android:textSize="20sp" />
         </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

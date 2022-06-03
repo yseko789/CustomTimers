@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/listFragment"
         android:name="com.yseko.customtimers.ListFragment"
-        android:label="fragment_list"
-        tools:layout="@layout/fragment_list" >
+        android:label="My Custom Timers"
+        tools:layout="@layout/fragment_list">
         <action
             android:id="@+id/action_listFragment_to_timerFragment"
             app:destination="@id/timerFragment" />
@@ -20,51 +20,57 @@
     <fragment
         android:id="@+id/timerFragment"
         android:name="com.yseko.customtimers.TimerFragment"
-        android:label="fragment_timer"
-        tools:layout="@layout/fragment_timer" >
+        android:label="{task}"
+        tools:layout="@layout/fragment_timer">
         <argument
             android:name="hours"
-            app:argType="integer"
-            android:defaultValue="0" />
+            android:defaultValue="0"
+            app:argType="integer" />
         <argument
             android:name="minutes"
-            app:argType="integer"
-            android:defaultValue="0" />
+            android:defaultValue="0"
+            app:argType="integer" />
         <argument
             android:name="seconds"
-            app:argType="integer"
-            android:defaultValue="0" />
+            android:defaultValue="0"
+            app:argType="integer" />
         <argument
             android:name="task"
             app:argType="string" />
+        <action
+            android:id="@+id/action_timerFragment_to_listFragment"
+            app:destination="@id/listFragment" />
     </fragment>
     <fragment
         android:id="@+id/addTimerFragment"
         android:name="com.yseko.customtimers.AddTimerFragment"
-        android:label="fragment_add_timer"
-        tools:layout="@layout/fragment_add_timer" >
+        android:label="{action}"
+        tools:layout="@layout/fragment_add_timer">
         <action
             android:id="@+id/action_addTimerFragment_to_listFragment"
             app:destination="@id/listFragment" />
         <argument
             android:name="id"
-            app:argType="integer"
-            android:defaultValue="-1" />
+            android:defaultValue="-1"
+            app:argType="integer" />
         <argument
             android:name="task"
-            app:argType="string"
-            android:defaultValue=""/>
+            android:defaultValue=""
+            app:argType="string" />
         <argument
             android:name="hours"
-            app:argType="integer"
-            android:defaultValue="-1" />
+            android:defaultValue="-1"
+            app:argType="integer" />
         <argument
             android:name="minutes"
-            app:argType="integer"
-            android:defaultValue="-1" />
+            android:defaultValue="-1"
+            app:argType="integer" />
         <argument
             android:name="seconds"
-            app:argType="integer"
-            android:defaultValue="-1" />
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <argument
+            android:name="action"
+            app:argType="string" />
     </fragment>
 </navigation>
