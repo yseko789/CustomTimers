@@ -15,7 +15,5 @@ data class Timer (
     @ColumnInfo(name = "seconds")
     val seconds: Int,
     @ColumnInfo(name="task")
-    val task: String,
-    @ColumnInfo(name = "order")
-    val order: Int=0
+    val task: String
     )
